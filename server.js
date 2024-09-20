@@ -46,7 +46,6 @@ application.use(csurf())
 application.use(globalMiddleware) //nossos próprios middlewares.
 application.use(verificaErroCsrf)
 application.use(csrfMiddleware)
-application.use(anotherMiddleware)
 
 application.use(rotas)
 
