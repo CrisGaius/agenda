@@ -1,0 +1,27 @@
+<%- include('./includes/head.ejs') %>
+
+  <main class="container">
+    <h1>
+      <%= csrfToken %>
+    </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil cumque unde aliquid! Nesciunt non nulla
+      impedit obcaecati iure modi harum beatae ad nisi, itaque tempora dolorum nobis similique aliquid quam. Lorem
+      ipsum dolor, sit amet consectetur adipisicing elit. Unde odio minus dolorum. At inventore deserunt illum, ut
+      expedita non consequuntur corrupti fugiat blanditiis repellendus debitis molestiae laborum reprehenderit
+      sunt laboriosam.</p>
+
+    <form action="/" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="campo container">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="campo container">
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age">
+      </div>
+      <button id="botao_enviar">Enviar</button>
+    </form>
+  </main>
+
+  <%- include ('./includes/footer.ejs') %>

@@ -1,0 +1,11 @@
+<% %> -- Controle de fluxo (if, for, while)
+<%= %> -- Imprime escapando caracteres
+<%- %> -- Imprime sem escapar caracteres
+<%# %> -- Comentário
+<%- include('') %> -- Podemos incluir arquivos que são mais recorrentes.
+
+<% if (something) { %>
+  <%= display something %>
+<% } else { %>
+  <%= display something else %>
+<% }%>
