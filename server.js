@@ -18,7 +18,7 @@ const rotas = require('./routes')
 const caminho = require('path')
 const helmet = require('helmet')
 const csurf = require('csurf')
-const { globalMiddleware, anotherMiddleware, verificaErroCsrf, csrfMiddleware } = require('./src/middlewares/middleware')
+const { globalMiddleware, verificaErroCsrf, csrfMiddleware } = require('./src/middlewares/middleware')
 
 application.use(helmet())
 application.use(express.urlencoded({ extended: true }))

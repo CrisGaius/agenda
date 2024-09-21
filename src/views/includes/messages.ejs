@@ -1,0 +1,11 @@
+<% if (errors) {%>
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-danger">
+        <% for (error of errors) {%>
+          <%= erro %><br>
+            <% } %>
+      </div>
+    </div>
+  </div>
+  <% } %>

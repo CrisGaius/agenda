@@ -3,7 +3,7 @@ exports.globalMiddleware = (request, response, next) => {
 }
 
 exports.verificaErroCsrf = (error, request, response, next) => {
-  if (error && error.code === 'EBADCSRFTOKEN') {
+  if (error) {
     return response.render('404')
   }
 }
