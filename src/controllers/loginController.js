@@ -5,20 +5,25 @@ exports.index = (request, response) => {
 }
 
 exports.register = async (request, response) => {
-  const login = new Login(request.body)
   try {
+    const login = new Login(request.body)
+
     await login.register()
 
     if (login.errors.length > 0) {
       request.flash('errors', login.errors)
       request.session.save(() => {
-        response.redirect('../views/login.ejs')
+        response.redirect('/login')
       })
       return
     }
 
-    response.send(login.errors)
+    request.flash('success', 'Usuário criado com sucesso.')
+    request.session.save(() => {
+      return response.redirect('/login')
+    })
   } catch (e) {
     console.error(e)
+    return response.render('404')
   }
 }
