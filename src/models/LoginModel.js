@@ -16,6 +16,20 @@ class Login {
     this.user = null
   }
 
+  async signIn() {
+    this.valida()
+    if (this.errors.length > 0) return
+
+    this.user = await LoginModel.findOne({ email: this.body.email })
+
+    if (!this.user) return this.errors.push('Usuário não encontrado.')
+
+    if (!bcryptjs.compareSync(this.body.senha, this.user.senha)) {
+      this.user = null
+      return this.errors.push('Senha Inválida')
+    }
+  }
+
   async register() {
     this.valida()
     if (this.errors.length > 0) return
