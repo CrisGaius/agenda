@@ -17,6 +17,8 @@ rota.get('/login/logout', loginController.logout) // rota para deslogar.
 
 //Rotas de contato
 rota.get('/contato', estaLogado, contatoController.index) // rota para criar um contato.
-rota.post('/contato/criar-contato', estaLogado, contatoController.criaConta) // recebendo dados enviados no formulário via post.
+rota.post('/contato/criar-contato', estaLogado, contatoController.criarContato) // recebendo dados enviados no formulário via post.
+rota.get('/contato/:id', estaLogado, contatoController.buscaContato) // Rota para buscar o contato pelo id.
+// rota.post('/contato/edit/:id', estaLogado, contatoController.editarContato) // Rota para efetuar edições em um determinado contato.
 
 module.exports = rota
