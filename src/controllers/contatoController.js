@@ -34,3 +34,26 @@ exports.buscaContato = async function (request, response) {
 
   response.render('contato', { contato })
 }
+
+exports.editarContato = async function (request, response) {
+  if (!request.params.id) return response.render('404')
+
+  try {
+    const contato = new Contato(request.body)
+    await contato.editarContato(request.params.id)
+
+    if (contato.errors.length > 0) {
+      request.flash('errors', contato.errors)
+      request.session.save(() => response.redirect(`/contato/${request.params.id}`))
+      return
+    }
+
+    request.flash('success', 'Contato modificado com sucesso.')
+    request.session.save(() => response.redirect(`/contato/${contato.contato._id}`))
+    return
+  } catch (e) {
+    console.log(e)
+    response.render('404')
+  }
+
+}

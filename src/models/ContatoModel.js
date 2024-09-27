@@ -33,10 +33,18 @@ class Contato {
     return user
   }
 
+  async editarContato(id) {
+    if (typeof id !== 'string') return
+    this.valida()
+    if (this.errors.length > 0) return
+    this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true })
+  }
+
+
   valida() {
     this.cleanUp()
 
-    if (this.body.email && !validator.isEmail(this.body.email)) this.errors.push('Email inválido.')
+    if (this.body.email.length === 0 || !validator.isEmail(this.body.email)) this.errors.push('Email inválido.')
     if (!this.body.nome) this.errors.push('Nome é um campo obrigatório')
     if (!this.body.email && !this.body.telefone) this.errors.push('Preencha o email ou o telefone.')
   }
