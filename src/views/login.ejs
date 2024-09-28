@@ -11,10 +11,10 @@
           <%- include('includes/messages') %>
 
             <div class="row">
-              <div class="col-lg">
+              <div class="col-lg my-5">
                 <p class="fs-2">Faça seu cadastro</p>
                 <p>Se você ainda não tem uma conta, preencha o formulário abaixo.</p>
-                <form action="/login/register" method="post">
+                <form id="form__sign-in" action="/login/register" method="post">
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <div class="form-group">
                     <label for="email">Endereço de email</label>
@@ -30,11 +30,11 @@
               </div>
 
 
-              <div class="col-lg">
+              <div class="col-lg my-5">
                 <p class="fs-2">Faça seu login</p>
 
                 <p>Se você já tem uma conta, efetue seu login abaixo.</p>
-                <form action="/login/sign-in" method="post">
+                <form id="form__login" action="/login/sign-in" method="post">
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <div class="form-group">
                     <label for="email">Endereço de email</label>
