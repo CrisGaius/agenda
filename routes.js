@@ -20,5 +20,6 @@ rota.get('/contato', estaLogado, contatoController.index) // rota para criar um 
 rota.post('/contato/criar-contato', estaLogado, contatoController.criarContato) // recebendo dados enviados no formulário via post.
 rota.get('/contato/:id', estaLogado, contatoController.buscaContato) // Rota para buscar o contato pelo id.
 rota.post('/contato/edit/:id', estaLogado, contatoController.editarContato) // Rota para efetuar edições em um determinado contato.
+rota.get('/contato/delete/:id', estaLogado, contatoController.deletarContato) // Rota para excluir um contato do banco de dados.
 
 module.exports = rota

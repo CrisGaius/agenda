@@ -55,5 +55,15 @@ exports.editarContato = async function (request, response) {
     console.log(e)
     response.render('404')
   }
+}
 
+exports.deletarContato = async function (request, response) {
+  if (!request.params.id) return response.render('404')
+
+  const contato = await Contato.deletarContato(request.params.id)
+  if (!contato) return response.render('404')
+
+  request.flash('success', 'Contato excluído com sucesso.')
+  request.session.save(() => response.redirect('/'))
+  return
 }

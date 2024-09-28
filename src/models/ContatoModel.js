@@ -29,8 +29,21 @@ class Contato {
   static async buscaPeloid(id) {
     if (typeof id !== 'string') return
 
-    const user = await ContatoModel.findById(id)
-    return user
+    const contato = await ContatoModel.findById(id)
+    return contato
+  }
+
+  static async buscaContatos() {
+    const contatos = await ContatoModel.find().sort({ dataCriacao: -1 })
+
+    return contatos
+  }
+
+  static async deletarContato(id) {
+    if (typeof id !== 'string') return
+    const contato = await ContatoModel.findOneAndDelete({ _id: id })
+
+    return contato
   }
 
   async editarContato(id) {
