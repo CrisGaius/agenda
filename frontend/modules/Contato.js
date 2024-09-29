@@ -1,6 +1,6 @@
 const validator = require('validator')
 
-export default class Login {
+export default class Contato {
   constructor(classeForm) {
     this.formulario = document.querySelector(classeForm)
   }
@@ -12,29 +12,35 @@ export default class Login {
   eventos() {
     if (!this.formulario) return
 
-    this.formulario.addEventListener('submit', (e) => {
+    this.formulario.addEventListener('submit', e => {
       e.preventDefault()
-      this.validarCampos(e)
+      this.validaCampos(e)
     })
   }
 
-  validarCampos(e) {
+  validaCampos(e) {
     const el = e.target
+    const inputNome = el.querySelector('input#nome')
     const inputEmail = el.querySelector('input#email')
-    const inputSenha = el.querySelector('input#senha')
+    const inputTelefone = el.querySelector('input#telefone')
     let error = false
 
     for (let erro of this.formulario.querySelectorAll('span.text-danger')) {
       erro.remove()
     }
 
-    if (!validator.isEmail(inputEmail.value)) {
+    if (!inputNome.value) {
+      this.criaErro(inputNome, 'Nome é um campo obrigatório.')
+      error = true
+    }
+
+    if (inputEmail.value.length === 0 || !validator.isEmail(inputEmail.value)) {
       this.criaErro(inputEmail, 'Email inválido.')
       error = true
     }
 
-    if (inputSenha.value.length < 3 || inputSenha.value.length > 50) {
-      this.criaErro(inputSenha, 'Senha inválida.')
+    if (!inputTelefone.value) {
+      this.criaErro(inputTelefone, 'Telefone é um campo obrigatório.')
       error = true
     }
 

@@ -59,7 +59,7 @@ class Contato {
 
     if (this.body.email.length === 0 || !validator.isEmail(this.body.email)) this.errors.push('Email inválido.')
     if (!this.body.nome) this.errors.push('Nome é um campo obrigatório')
-    if (!this.body.email && !this.body.telefone) this.errors.push('Preencha o email ou o telefone.')
+    if (!this.body.email || !this.body.telefone) this.errors.push('Preencha o email e o telefone.')
   }
 
   cleanUp() {
